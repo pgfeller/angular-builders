@@ -24,10 +24,10 @@
   "author": "Evgeny Barabanov",
   "license": "MIT",
   "engines": {
-    "node": "^14.20.0 || ^16.13.0 || >=18.10.0"
+    "node": "^14.20.0 || ^16.13.0 || >=18.13"
   },
   "scripts": {
-    "build:packages": "yarn workspaces foreach -vip --include '@angular-builders/*' run build",
+    "build:packages": "yarn workspaces foreach --verbose --worktree --topological --include '@angular-builders/*' run build",
     "ci": "yarn build:packages && ./scripts/run-ci.sh",
     "lerna": "lerna",
     "graduate": "lerna publish --conventional-commits --conventional-graduate",
@@ -65,5 +65,10 @@
     "arrowParens": "avoid",
     "singleQuote": true
   },
-  "packageManager": "yarn@3.8.1"
+  "packageManager": "yarn@4.1.1",
+  "dependencies": {
+    "@angular-builders/common": "workspace:^",
+    "@angular/cli": "^17.3.1",
+    "global": "^4.4.0"
+  }
 }
